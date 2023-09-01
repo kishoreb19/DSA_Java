@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -59,17 +60,6 @@ public class Test {
         }
         return -1;
     }
-    static String rev(String s){
-        char d[] = s.toCharArray();
-
-        for (int i=0;i<d.length/2;i++){
-            char t = d[i];
-            d[i] = d[d.length-1-i];
-            d[d.length-1-i] = t;
-        }
-        return new String(d);
-    }
-
     static int bestTimeToBuyStock(int arr[]){
         int max = 0;
         for(int i =0;i<arr.length-1;i++){
@@ -84,11 +74,36 @@ public class Test {
         }
         return max;
     }
+    static void twoDArray(int arr[][],int target){
+        int n = arr.length;
+        int m = arr[0].length;
+        int low =0;
+        int high = n*m-1;
+        while (low<=high){
+            int mid = low-(low-high)/2;
+            int midElement = arr[mid/m][mid%m];
+            if(midElement==target){
+                System.out.println(mid/m +" "+ mid%m);
+                return;
+            }
+            if(midElement>target){
+                high = mid-1;
+            }else{
+                low = mid+1;
+            }
+        }
+        System.out.println("NOT FOUND");
+    }
     public static void main(String[] args) {
         System.out.println(rotateByK(new int[]{1,1,1,1,2,3,1,1}, 3));
-        System.out.println();
         System.out.println(search_(new int[]{1, 1, 1, 2, 2, 3, 1}, 2));
-        System.out.println(rev("1234"));
         System.out.println(bestTimeToBuyStock(new int[]{98,101,66,72}));
+        System.out.println();
+
+        int arr[][] = {{1,2,3},{4,5,6}};
+        twoDArray(arr,6);
+
+
+
     }
 }
