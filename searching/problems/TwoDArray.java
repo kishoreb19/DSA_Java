@@ -33,9 +33,9 @@ public class TwoDArray {
                 return;
             }
             if(arr[i][j]>target){
-                j--; //Moving left
+                j--; //Moving left for smaller elements
             }else{
-                i++; //Moving down
+                i++; //Moving downwards for larger elements
             }
         }
         System.out.println("Element Not Found !");

@@ -83,8 +83,42 @@ public class RotatedSortedArray {
         return -1;
     }
 
+    //For Duplicate Elements
+    public static int search_d(int arr[],int target){
+        int low =0;
+        int high = arr.length-1;
+        while (low<=high){
+            int mid = low-(low-high)/2;
+            if(arr[mid]==target){
+                return mid;
+            }
+
+            if(arr[low]==arr[mid] && arr[mid] == arr[high]){
+                low++;
+                high--;
+            }
+
+            if(arr[mid]<=arr[high]){
+                if(arr[mid]<target && target<=arr[high]){
+                    low = mid+1;
+                }else{
+                    high = mid-1;
+                }
+            }
+            else{
+                if(arr[low]<=target && target<arr[mid]){
+                    high = mid-1;
+                }else{
+                    low = mid+1;
+                }
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         int arr[] = {10,11,12,1,2,3,4,5,6,7,8,9};
+        int arr2[] = {1,1,1,2,2,3,1};
         //Index
         System.out.println(minElement(arr));
         System.out.println();
