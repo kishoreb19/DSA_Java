@@ -13,6 +13,7 @@ public class StackImplementationArray {
         }
         public void push(int data){
             if(top<capacity-1){
+                //If space is available
                 top++;
                 arr[top] = data;
             }else{
@@ -21,6 +22,7 @@ public class StackImplementationArray {
         }
         public int pop(){
             if(top>=0){
+                //If at least one single element is present
                 int element = arr[top];
                 top--;
                 return element;
@@ -31,6 +33,7 @@ public class StackImplementationArray {
         }
         public int peek(){
             if(top>=0){
+                //If at least one single element is present
                 return arr[top];
             }else{
                 return -1;
