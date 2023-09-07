@@ -11,8 +11,10 @@ public class StackImplementationArray {
             arr = new int[capacity];
             top = -1;
         }
+
         public void push(int data){
-            if(top<capacity-1){
+            if(capacity-top>1){
+                //Or top<capacity-1
                 //If space is available
                 top++;
                 arr[top] = data;
@@ -20,6 +22,7 @@ public class StackImplementationArray {
                 System.out.println("Overflow !");
             }
         }
+
         public int pop(){
             if(top>=0){
                 //If at least one single element is present
@@ -31,6 +34,7 @@ public class StackImplementationArray {
                 return -1;
             }
         }
+
         public int peek(){
             if(top>=0){
                 //If at least one single element is present
@@ -39,6 +43,7 @@ public class StackImplementationArray {
                 return -1;
             }
         }
+
         public int size(){
             return top+1;
         }

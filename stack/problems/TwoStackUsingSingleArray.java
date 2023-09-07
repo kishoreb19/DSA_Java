@@ -1,10 +1,10 @@
 package stack.problems;
-public class TwoStack {
+public class TwoStackUsingSingleArray {
 
     int arr[];
     int top1,top2,size;
 
-    public TwoStack(int s) {
+    public TwoStackUsingSingleArray(int s) {
         size = s;
         arr = new int[size];
         top1 = -1;
@@ -53,7 +53,7 @@ public class TwoStack {
     }
 
     public static void main(String[] args) {
-
+        System.out.println("https://www.codingninjas.com/studio/problems/two-stacks_983634");
     }
 }
 
