@@ -1,11 +1,7 @@
 package stack;
-import java.util.Scanner;
-
 public class StackImplementationArray {
     public static class Stack{
-        int arr[];
-        int top;
-        int capacity;
+        int arr[]; int top; int capacity;
         Stack(int capacity){
             this.capacity = capacity;
             arr = new int[capacity];
