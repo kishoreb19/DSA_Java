@@ -13,6 +13,7 @@ public class MinimumBracketReversal {
             if(ch=='{'){
                 st.push(ch);
             }else{
+                //Closing bracket
                 if(!st.empty() && st.peek()=='{'){
                     st.pop();
                 }else{
@@ -20,6 +21,7 @@ public class MinimumBracketReversal {
                 }
             }
         }
+        //Now the stack contains only invalid expressions
         int a =0; int b=0;
         while (!st.empty()){
             if(st.peek()=='{'){
