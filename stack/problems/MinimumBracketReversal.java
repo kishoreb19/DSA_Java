@@ -35,6 +35,6 @@ public class MinimumBracketReversal {
     }
 
     public static void main(String[] args) {
-        System.out.println(minimumBracketReversal("{{"));
+        System.out.println(minimumBracketReversal("{{{}"));
     }
 }
