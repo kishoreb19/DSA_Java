@@ -1,29 +1,48 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Stack;
 
 public class Test {
-
-    public static ArrayList<Integer> fun(int arr[]){
-        ArrayList<Integer> al = new ArrayList<>();
-        Stack<Integer>stack = new Stack<>();
-        stack.add(-1); int n = arr.length;
-        int ans[] = new int[n];
-        for(int i=n-1;i>=0;i--){
-            int curr = arr[i];
-            while(stack.peek()>=curr){
-                stack.pop();
-            }
-            ans[i] = stack.peek();
-            stack.push(curr);
-        }
-        for (int i = 0; i < n; i++) {
-            al.add(ans[i]);
-        }
-        return al;
+    public static boolean knows(int arr[][],int a,int  b){
+        return arr[a][b] == 1;
     }
+    public static int celebrityProblem(int arr[][],int n){
+        Stack<Integer> stack = new Stack<>();
+        for(int i=0;i<n;i++){
+            stack.push(i);
+        }
+        while(stack.size() > 1 ){
+            int a = stack.pop();
+            int b = stack.pop();
 
+            if(knows(arr,a,b)){
+                //If 'a' knows 'b' then push 'b' since celebrity doesn't know anybody.
+                stack.push(b);
+            }else{
+                stack.push(a);
+            }
+        }
+        int potentialCandidate = stack.peek();
+        //Verifying whether our potentialCandidate is celebrity or not.
+        int zeroCount =0; int oneCount=0;
+        for(int i=0;i<n;i++){
+            if(arr[potentialCandidate][i]==0){
+                zeroCount++;
+            }
+            if(arr[i][potentialCandidate]==1){
+                oneCount++;
+            }
+        }
+        if(zeroCount==n && oneCount==n-1){
+            return potentialCandidate;
+        }else{
+            return -1;
+        }
+        //Time Complexity - O(N)
+    }
     public static void main(String[] args) {
-        System.out.println(fun(new int[]{2,1,4,3}));
+        System.out.println(celebrityProblem(new int[][]{
+                {0,1,0},
+                {0,0,0},
+                {0,1,0}},
+                3));
     }
 }
