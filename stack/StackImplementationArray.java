@@ -64,4 +64,5 @@ public class StackImplementationArray {
             stack.pop();
         }
     }
+    //Time Complexity for every method here is O(1)
 }
