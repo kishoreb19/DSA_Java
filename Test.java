@@ -1,48 +1,45 @@
-import java.util.Stack;
+import java.math.BigInteger;
+import java.util.*;
 
 public class Test {
-    public static boolean knows(int arr[][],int a,int  b){
-        return arr[a][b] == 1;
-    }
-    public static int celebrityProblem(int arr[][],int n){
-        Stack<Integer> stack = new Stack<>();
-        for(int i=0;i<n;i++){
-            stack.push(i);
-        }
-        while(stack.size() > 1 ){
-            int a = stack.pop();
-            int b = stack.pop();
-
-            if(knows(arr,a,b)){
-                //If 'a' knows 'b' then push 'b' since celebrity doesn't know anybody.
-                stack.push(b);
-            }else{
-                stack.push(a);
-            }
-        }
-        int potentialCandidate = stack.peek();
-        //Verifying whether our potentialCandidate is celebrity or not.
-        int zeroCount =0; int oneCount=0;
-        for(int i=0;i<n;i++){
-            if(arr[potentialCandidate][i]==0){
-                zeroCount++;
-            }
-            if(arr[i][potentialCandidate]==1){
-                oneCount++;
-            }
-        }
-        if(zeroCount==n && oneCount==n-1){
-            return potentialCandidate;
-        }else{
-            return -1;
-        }
-        //Time Complexity - O(N)
+    static void swap(int x,int y){
+        int temp = x;
+        x = y;
+        y = temp;
     }
     public static void main(String[] args) {
-        System.out.println(celebrityProblem(new int[][]{
-                {0,1,0},
-                {0,0,0},
-                {0,1,0}},
-                3));
+//        ArrayList<Integer> list1= new ArrayList<>();
+//        ArrayList<Integer> list2 = new ArrayList<>();
+//        list1.add(1);
+//        list1.add(6);
+//        list2.add(1);
+//        list2.add(6);
+//        System.out.println(list1.addAll(list2));
+//        System.out.println(list1);
+//        Map<Integer,Integer> m = new HashMap<>();
+//        m.put(1,9);
+//        m.put(2,0);
+//        for(int i : m.keySet()){
+//            System.out.println(i+"  "+m.get(i));
+//        }
+//        try {
+//            int r = 5/0;
+//        }catch (Exception e){
+//            System.out.println(e);
+//            e.printStackTrace();
+//        }
+//        long ll = 2L;
+//        float f = 0.333F;
+//        System.out.println(ll);
+
+        int num = 354;
+        int rev=0;
+        while(num>0){
+            rev = rev*10 + num%10;
+            num = num/10;
+        }
+        System.out.println(rev);
+
+
     }
 }

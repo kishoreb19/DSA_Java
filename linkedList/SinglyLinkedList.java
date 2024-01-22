@@ -1,9 +1,12 @@
 package linkedList;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SinglyLinkedList {
     Node head;
     int size=0;
-    class Node{
+     class Node{
         int data;
         Node next;
         Node(int data){
@@ -16,7 +19,6 @@ public class SinglyLinkedList {
         Node temp = new Node(data);
         if(head == null) {
             head = temp;
-            return;
         } else {
             temp.next = head;
             head = temp;
@@ -35,14 +37,14 @@ public class SinglyLinkedList {
             lastNode.next = temp;
 
     }
-    public void insertAt(int pos,int data){
-        if(pos>size || pos<0){
-            System.out.println("Invalid Position");
+    public void insertAt(int index,int data){
+        if(index>size || index<0){
+            System.out.println("Invalid Index");
             return;
         }
         Node temp = new Node(data);
         Node currNode = head;
-        for(int i=0;i<pos-1;i++) {
+        for(int i=0;i<index-1;i++) {
             currNode = currNode.next;
         }
         temp.next = currNode.next;
@@ -62,9 +64,10 @@ public class SinglyLinkedList {
             System.out.println("Empty Linked List");
             return;
         }
-        size--;
+
         if(head.next == null){ //If only one node is present
             head=null;
+            size--;
             return;
         }
 
@@ -75,6 +78,7 @@ public class SinglyLinkedList {
             secondLast = secondLast.next;
         }
         secondLast.next = null;
+        size--;
     }
     public void display(){
         Node currNode = head;
@@ -86,21 +90,44 @@ public class SinglyLinkedList {
     public int getSize(){
         return size;
     }
+
+
+    //Optional functions
+        public  Node reverse(Node head){
+        if(head==null || head.next == null){
+            return head;
+        }
+        Node chotahead = reverse(head.next);
+        head.next.next = head;
+        head.next = null;
+        return chotahead;
+        //Time Complexity - O(N)
+        //Space Complexity - O(N)
+    }
+
+    public static boolean detectLoop(Node head){
+        if(head == null){
+            return false;
+        }
+        Map<Node, Boolean> map = new HashMap<>();
+        Node curr = head;
+        while (curr != null){
+            if(map.get(curr)){
+                return true;
+            }
+            map.put(curr,true);
+            curr = curr.next;
+        }
+        return false;
+    }
     public static void main(String[] args) {
         System.out.println("Singly Linked List");
         SinglyLinkedList list = new SinglyLinkedList();
         list.addLast(2);
         list.addLast(3);
-        list.addFirst(1);
-        list.insertAt(1,9);
-        list.insertAt(3,7);
-//        list.removeLast();
-//        list.removeLast();
-//        list.removeLast();
-
+        list.addLast(4);
+        System.out.println(detectLoop(list.head));
         list.display();
-        System.out.println("\nSize : "+ list.getSize());
-//        Node n = list.new Node(6);
-//        System.out.println(n.data);
+        System.out.println();
     }
 }
