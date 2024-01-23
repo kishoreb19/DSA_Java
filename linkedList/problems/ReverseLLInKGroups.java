@@ -112,6 +112,8 @@ public class ReverseLLInKGroups {
 //
 //        //step3: return head of reversed list
 //        return prev;
+    //Input  - 1 2 3 4 5 k=3
+    //OutPut - 3 2 1 5 4
 //    }
 
     public static boolean isGroupComplete(Node head, int k) {
@@ -134,21 +136,23 @@ public class ReverseLLInKGroups {
         if (isGroupComplete(head, k)) {
             Node prev = null;
             Node curr = head;
-            Node next = null;
+            Node forward = null;
             int cnt = 0;
             while (curr != null && cnt < k) {
-                next = curr.next;
+                forward = curr.next;
                 curr.next = prev;
                 prev = curr;
-                curr = next;
+                curr = forward;
                 cnt++;
             }
-            if (next != null) {
-                head.next = kReverse(next, k);
+            if (forward != null) {
+                head.next = kReverse(forward, k);
             }
             return prev;
         }
         return head;
+        //Input  - 1 2 3 4 5 k=3
+        //OutPut - 3 2 1 4 5
     }
 
     public static void main(String[] args) {
