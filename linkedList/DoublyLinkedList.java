@@ -93,6 +93,19 @@ public class DoublyLinkedList {
             currNode = currNode.next;
         }
     }
+    //Reverse DLL
+    public static Node reverseDLL(Node head)
+    {
+        // Write your code here.
+        if(head==null || head.next==null){
+            return head;
+        }
+        Node chotahead = reverseDLL(head.next);
+        head.next.next = head;
+        head.prev = head.next;
+        head.next = null;
+        return chotahead;
+    }
 
     public static void main(String[] args) {
         System.out.println("Doubly Linked List");
@@ -100,7 +113,7 @@ public class DoublyLinkedList {
         for(int i=1;i<=5;i++){
             list.addLast(i);
         }
-        list.remove(3);
+        //list.remove(0);
         list.insertAt(3,0);
         list.display();
 
