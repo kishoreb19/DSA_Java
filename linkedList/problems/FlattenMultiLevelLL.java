@@ -60,7 +60,7 @@ public class FlattenMultiLevelLL {
         }
         return dummy.next;
         //Time Complexity - O(N^2)
-        //Space Complexity -O(N)
+        //Space Complexity -O(1)
     }
     //https://www.codingninjas.com/studio/problems/flatten-the-multi-level-linked-list_839810
 }

@@ -2,24 +2,58 @@ import java.util.*;
 
 public class Test {
 
-    public static void occurrence(String s){
-        Map<Character,Integer> map = new HashMap<>();
-        for(int i=0;i<s.length();i++){
-            char ch = s.charAt(i);
-            if(map.containsKey(ch)){
-                map.replace(ch,map.get(ch)+1);
-            }else{
-                map.put(ch,1);
+    public static long minCostToCrazyBitstring(int n, String s, long[] a) {
+        // Count the number of '0's and '1's
+        int zeroCount = 0, oneCount = 0;
+        for (char c : s.toCharArray()) {
+            if (c == '0') zeroCount++;
+            else oneCount++;
+        }
+
+        // If the string is already a crazy-bitstring, return 0
+        if (zeroCount == n || oneCount == n || zeroCount == oneCount) return 0;
+
+        // Find the minimum cost by considering all possible transformations
+        long minCost = Long.MAX_VALUE;
+        long costOfZeroToOnes = 0, costOfOneToZeros = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) == '0') {
+                costOfZeroToOnes += a[i];
+            } else {
+                costOfOneToZeros += a[i];
             }
         }
-        for(char ch : map.keySet()){
-            System.out.print(ch+""+map.get(ch)+" ");
-        }
-        //Time Complexity - O(N)
-        //Space Complexity - O(N)
+
+        minCost = Math.min(costOfZeroToOnes, costOfOneToZeros);
+
+        return minCost;
     }
     public static void main(String[] args) {
-        String s = "aabccbbdd";
-        occurrence(s);
+//        Scanner scanner = new Scanner(System.in);
+//        int t = scanner.nextInt(); // Number of test cases
+//        while (t-- > 0) {
+//            int n = scanner.nextInt(); // Length of the string
+//            String s = scanner.next(); // Binary string
+//            long[] a = new long[n]; // Array of costs
+//            for (int i = 0; i < n; i++) {
+//                a[i] = scanner.nextLong();
+//            }
+//
+//            long result = minCostToCrazyBitstring(n, s, a);
+//            System.out.println();
+//            System.out.println(result);
+//        }
+//        scanner.close();
+        Queue<Integer>q = new LinkedList<>();
+        q.add(1);
+        Stack<Integer>s = new Stack<>();
+        s.push(1);
+        s.push(2);
+        s.push(3);
+        System.out.println(s);
+        for(int i=1;i<=2;i++){
+            s.push(s.pop());
+        }
     }
 }
