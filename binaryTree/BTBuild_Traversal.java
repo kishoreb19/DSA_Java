@@ -16,6 +16,7 @@ public class BTBuild_Traversal {
         }
     }
     static Scanner sc = new Scanner(System.in);
+
     static Node buildTree(){
         System.out.print("Enter data (-1 for null): ");
         int data = sc.nextInt();
