@@ -22,8 +22,19 @@ public class DoublyCircularLinkedList {
             return;
         }
         Node curr = head;
-        while(curr.data!=element){
-            curr = curr.next;
+        boolean found = false;
+//        while(curr.data!=element){
+//            curr = curr.next;
+//        }
+        do{
+            if(curr.data==element){
+                found = true;
+                break;
+            }
+        }while (curr!=head);
+        if(!found){
+            System.out.println("Element not found!");
+            return;
         }
         //Inserting new Node
         Node forward = curr.next;
@@ -100,14 +111,10 @@ public class DoublyCircularLinkedList {
 
     public static void main(String[] args) {
         DoublyCircularLinkedList list = new DoublyCircularLinkedList();
-        for(int i=0;i<5;i++){
+        for(int i=0;i<6;i++){
             list.insert(i,i+1);
         }
-
-        list.delete(-2);
-
-
+        //list.delete(1);
         list.display();
-        System.out.println(list.getSize());
     }
 }

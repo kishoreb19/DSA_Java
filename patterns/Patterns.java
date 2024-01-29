@@ -1,4 +1,4 @@
-package pattern;
+package patterns;
 
 public class Patterns {
     public static void triangle(int rows){

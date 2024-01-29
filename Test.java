@@ -45,15 +45,7 @@ public class Test {
 //            System.out.println(result);
 //        }
 //        scanner.close();
-        Queue<Integer>q = new LinkedList<>();
-        q.add(1);
-        Stack<Integer>s = new Stack<>();
-        s.push(1);
-        s.push(2);
-        s.push(3);
-        System.out.println(s);
-        for(int i=1;i<=2;i++){
-            s.push(s.pop());
-        }
+        Map<Integer,Integer> m = new HashMap<>();
+
     }
 }

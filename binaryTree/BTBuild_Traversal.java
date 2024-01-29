@@ -24,9 +24,9 @@ public class BTBuild_Traversal {
             return null;
         }
         Node root = new Node(data);
-        System.out.print("Enter data for inserting in left of "+data+": ");
+        System.out.println("Enter data for inserting in left of "+data+": ");
         root.left = buildTree();
-        System.out.print("Enter data for inserting in right of "+data+": ");
+        System.out.println("Enter data for inserting in right of "+data+": ");
         root.right = buildTree();
         return root;
         //Time  Complexity - O(N) N: no. of nodes
