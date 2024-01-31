@@ -1,51 +1,96 @@
+import binaryTree.BTBuild_Traversal;
+
 import java.util.*;
 
 public class Test {
 
-    public static long minCostToCrazyBitstring(int n, String s, long[] a) {
-        // Count the number of '0's and '1's
-        int zeroCount = 0, oneCount = 0;
-        for (char c : s.toCharArray()) {
-            if (c == '0') zeroCount++;
-            else oneCount++;
+    static class Node{
+        int data;
+        Node left;
+        Node right;
+        public Node(int data){
+            this.data = data;
+            this.left = null;
+            this.right = null;
         }
+    }
+    static Scanner sc = new Scanner(System.in);
 
-        // If the string is already a crazy-bitstring, return 0
-        if (zeroCount == n || oneCount == n || zeroCount == oneCount) return 0;
+    static void levelOrderTraversal(Node root){
+        if (root == null) {
+            System.out.println("Tree is empty");
+            return;
+        }
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while (!q.isEmpty()){
+            Node curr = q.poll();
+            if(curr==null){
+                if(q.isEmpty()) return;
+                q.add(curr);
+                System.out.println();
+                continue;
+            }
+            System.out.print(curr.data+" ");
+            if(curr.left!=null){
+                q.add(curr.left);
+            }
+            if(curr.right!=null){
+                q.add(curr.right);
+            }
+        }
+    }
+    static Node buildTree(){
+        System.out.print("Enter data (-1 for null): ");
+        int data = sc.nextInt();
+        if(data==-1){
+            return null;
+        }
+        Node root = new Node(data);
+        System.out.println("Enter data for inserting in left of "+data+": ");
+        root.left = buildTree();
+        System.out.println("Enter data for inserting in right of "+data+": ");
+        root.right = buildTree();
+        return root;
+        //Time  Complexity - O(N) N: no. of nodes
+        //Space Complexity - O(N)
+    }
 
-        // Find the minimum cost by considering all possible transformations
-        long minCost = Long.MAX_VALUE;
-        long costOfZeroToOnes = 0, costOfOneToZeros = 0;
+    static void traverseLeaf(Node root){
+        if(root==null){
+            return;
+        }
+        if(root.left==null && root.right==null){
+            System.out.println(root.data);
+        }
+        traverseLeaf(root.left);
+        traverseLeaf(root.right);
+    }
 
-        for (int i = 0; i < n; i++) {
-            if (s.charAt(i) == '0') {
-                costOfZeroToOnes += a[i];
-            } else {
-                costOfOneToZeros += a[i];
+    static boolean prime(int n,int i,int c){
+        if(i==n){
+            if(c==2){
+                return true;
+            }else {
+                return false;
             }
         }
 
-        minCost = Math.min(costOfZeroToOnes, costOfOneToZeros);
-
-        return minCost;
+        if(n%i==0){
+            prime(n,i+1,c+1);
+        }
+        return false;
     }
     public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
-//        int t = scanner.nextInt(); // Number of test cases
-//        while (t-- > 0) {
-//            int n = scanner.nextInt(); // Length of the string
-//            String s = scanner.next(); // Binary string
-//            long[] a = new long[n]; // Array of costs
-//            for (int i = 0; i < n; i++) {
-//                a[i] = scanner.nextLong();
-//            }
-//
-//            long result = minCostToCrazyBitstring(n, s, a);
-//            System.out.println();
-//            System.out.println(result);
-//        }
-//        scanner.close();
-        Map<Integer,Integer> m = new HashMap<>();
-
+        //1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
+//        Node root = buildTree();
+//        System.out.println("\nLevel Order:");
+//        levelOrderTraversal(root);
+//        System.out.println("\nLeaf:");
+//        traverseLeaf(root);
+//        Map<Integer,Integer>m = new HashMap<>();
+        System.out.println(prime(5,1,0));
+        
     }
 }

@@ -1,6 +1,6 @@
 package binaryTree.problems;
 
-public class isBalanced {
+public class isTreeBalanced {
     static class Node {
         int data;
         Node left;

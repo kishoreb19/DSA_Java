@@ -25,6 +25,8 @@ public class IsTreeIdentical {
         boolean right = isIdentical(root1.right,root2.right);
 
         return rootData && left && right;
+        //Time  Complexity - O(N)
+        //Space Complexity - O(H)
     }
     //https://www.geeksforgeeks.org/problems/determine-if-two-trees-are-identical/1
 }
