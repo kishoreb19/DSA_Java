@@ -66,7 +66,7 @@ public class RotatedSortedArray {
             if(arr[mid]==element){
                 return mid;
             }
-            if(arr[low]<arr[mid]){
+            if(arr[low]<=arr[mid]){
                 // low to mid is sorted
                 if(arr[low]<= element && element<arr[mid]){
                     // element exists between low to mid

@@ -28,10 +28,33 @@ public class RedundantBrackets {
         }
         return false;
     }
+    //Another method
+    public static boolean duplicateParanthesis(String s) {
+        // Write your code here
+        Stack<Character>st = new Stack<>();
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            if(c==')'){
+                int elementsInside=0;
+                while(st.peek()!='('){
+                    st.pop();
+                    elementsInside++;
+                }
+                st.pop();
+                if(elementsInside==0){
+                    return true;
+                }
+            }else{
+                st.push(c);
+            }
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         System.out.println(findRedundantBrackets("(a+b)"));
         System.out.println(findRedundantBrackets("(a+c*b)+(c))"));
         System.out.println("https://www.codingninjas.com/studio/problems/redundant-brackets_975473?leftPanelTab=0%3Fsource%3Dyoutube&campaign=Lovebabbarcodestudio&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbarcodestudio");
+        System.out.println("https://www.codingninjas.com/studio/problems/duplicate-parenthesis_2663296");
     }
 }
