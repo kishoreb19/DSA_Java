@@ -4,6 +4,10 @@ public class RotatedSortedArray {
     //Rotate By K
     public static int[] rotateArrayByKLEFT(int arr[],int k){
         int n = arr.length;
+        k=k%n;
+        //In certain cases, k might be greater than the length of the array.
+        //For example, if the array length is 5 and k is 7, rotating by 7 positions is the
+        //same as rotating by 2 positions in a circular manner (because 7 % 5 = 2).
         for(int i =1;i<=k;i++){
             int x = arr[0];
             for(int j=0;j<n-1;j++){
@@ -18,6 +22,7 @@ public class RotatedSortedArray {
     }
     public static int[] rotateArrayByKRIGHT(int arr[],int k){
         int n = arr.length;
+        k=k%n;
         for(int i =1;i<=k;i++){
             int x = arr[n-1];
             for(int j=n-1;j>0;j--){
