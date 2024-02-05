@@ -67,20 +67,19 @@ public class Test {
         traverseLeaf(root.left);
         traverseLeaf(root.right);
     }
-
-    static boolean prime(int n,int i,int c){
-        if(i==n){
-            if(c==2){
-                return true;
-            }else {
-                return false;
-            }
+    static int fibo(int n){
+        if(n==0 || n==1){
+            return n;
+        }
+        return fibo(n-2)+fibo(n-1);
+    }
+    static void traverseLeft(Node root){
+        if(root==null){
+            return;
         }
 
-        if(n%i==0){
-            prime(n,i+1,c+1);
-        }
-        return false;
+        traverseLeft(root.left);
+        System.out.println(root.data);
     }
     public static void main(String[] args) {
         //1 2 4 -1 -1 5 -1 -1 3 6 -1 -1 7 -1 -1
@@ -89,8 +88,11 @@ public class Test {
 //        levelOrderTraversal(root);
 //        System.out.println("\nLeaf:");
 //        traverseLeaf(root);
-//        Map<Integer,Integer>m = new HashMap<>();
-        System.out.println(prime(5,1,0));
-        
+//        System.out.println("kkkk");
+//        traverseLeft(root);
+        String s = "   helooo wrodl bro   ";
+       // s= Arrays.toString(s.trim().split(" "));
+        s= s.strip();
+        System.out.println(s);
     }
 }
