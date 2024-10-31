@@ -10,10 +10,10 @@ public class CircularQueueImplementation {
             front_q=rear_q=-1;
         }
         boolean enqueue(int data){
-            if((front_q==0 && rear_q==size-1) || (front_q!=0 && rear_q==(front_q-1)%(size-1))){
+            if((front_q==0 && rear_q==size-1) || rear_q==front_q-1){ //(front_q!=0 && rear_q==(front_q-1)%(size-1))
                 System.out.println("Queue is full !");
                 return false;
-            } else if (front_q==-1) {
+            } else if (front_q==-1 && rear_q==-1) {
                 //Single element push
                 front_q++; rear_q++;
             } else if (rear_q==size-1 && front_q!=0) {
@@ -28,7 +28,7 @@ public class CircularQueueImplementation {
         }
 
         int dequeue(){
-            if(front_q==-1){
+            if(front_q==-1&&rear_q==-1){
                 System.out.println("Queue is empty !");
                 return -1;
             }
