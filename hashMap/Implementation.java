@@ -37,14 +37,17 @@ public class Implementation {
         }
 
         int hashFunction(K key){
+            //Hash Code
             int hash = key.hashCode(); // Generates an integer hash that can be positive or negative (ex: 4574 or -3456346)
+            //Compression Function
             return Math.abs(hash)%N; // %N helps to bring hash within 0-(N-1) index
         }
 
         int findInLL(int bucketIdx, K key){
+            //Returns the index of the node having the key
             LinkedList<Node> bucket = buckets[bucketIdx]; //Contains LinkedList Nodes
 
-            for(int i=0;i<bucket.size();i++){
+            for(int i=0;i<bucket.size();i++){//Traversing through the nodes
                 if(bucket.get(i).key.equals(key)){
                     return i;
                 }
@@ -204,6 +207,8 @@ public class Implementation {
         map.put("Eggs",40);
         map.put("Cheese",60);
         map.put("Butter",200);
+        map.put("Paneer",400);
+        map.put("Cream",350);
 
         System.out.println("isEmpty: "+map.isEmpty());
 
