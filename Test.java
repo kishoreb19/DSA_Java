@@ -42,7 +42,13 @@ public class Test {
         j.add(9);
         System.out.println(j.toString());
         PriorityQueue<Integer> pq = new PriorityQueue<>();
-
+        LinkedList<Integer>[] llarr = new LinkedList[10];
+        for(int i =0;i<llarr.length;i++){
+            llarr[i] = new LinkedList<>();
+        }
+        for(int i =0;i<llarr.length;i++){
+            System.out.println(llarr[i]);
+        }
     }
 
 }
