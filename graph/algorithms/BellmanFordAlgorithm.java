@@ -6,6 +6,7 @@ import java.util.List;
 public class BellmanFordAlgorithm {
     public static int[] bellmanFord(int n, int m, int source, List<List<Integer>> edges) {
         // Write your code here.
+        if(edges.size() <= 2) return new int[]{-1}; //At least 3 edges (nodes) should be present to test for a cycle
         int[] dist = new int[n+1];
         Arrays.fill(dist,(int)1e8);
         dist[source] = 0;
