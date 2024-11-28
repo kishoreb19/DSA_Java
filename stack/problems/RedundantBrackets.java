@@ -35,17 +35,19 @@ public class RedundantBrackets {
         for(int i=0;i<s.length();i++){
             char c = s.charAt(i);
             if(c==')'){
-                int elementsInside=0;
+                int count = 0; //Count of operators inside '(' and ')'
                 while(st.peek()!='('){
                     st.pop();
-                    elementsInside++;
+                    count++;
                 }
                 st.pop();
-                if(elementsInside==0){
+                if(count==0){//If no operators were present inside () means they are redundant bracket
                     return true;
                 }
             }else{
-                st.push(c);
+                if(c=='(' || c=='+' || c=='-' || c=='*' || c=='/'){//Only add the operators and (
+                    st.add(c);
+                }
             }
         }
         return false;
