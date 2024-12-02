@@ -118,13 +118,11 @@ public class Recursion {
         }
         return lastIndex(arr,e,i-1);
     }
-    public static boolean isSorted(int arr[],int i){
-        if(i==arr.length-1)
+    public static boolean isSorted(int i, int arr[]){
+        if(i==arr.length-1){
             return true;
-        if(arr[i] < arr[i+1])
-            return isSorted(arr, i+1);
-        else
-            return false;
+        }
+        return arr[i]<=arr[i+1] && isSorted(i+1,arr);
     }
     public static String removeChar(String s, char c, int i){
         String d ="";
