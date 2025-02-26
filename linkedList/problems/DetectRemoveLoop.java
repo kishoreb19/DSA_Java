@@ -101,16 +101,13 @@ public class DetectRemoveLoop {
 //        }
 //        return false;
 //    }
-    //Floyd Cycle Detection
+    //Floyd Cycle Detection (Tortoise and Hare Algorithm)
     public static Node detectLoop(Node head){
         if(head==null) return null;
 
         Node slow = head,fast = head;
-        while (slow != null && fast !=null){
-            fast = fast.next;
-            if(fast != null){
-                fast = fast.next;
-            }
+        while (fast !=null && fast.next != null){
+            fast = fast.next.next;
             slow = slow.next;
             if(slow==fast){
                 return fast;

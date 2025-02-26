@@ -100,6 +100,19 @@ public class MiddleNode {
         }
         return slowptr;
     }
+
+    //New 2025 Version (Tortoise and Hare Algorithm (Floyd's Algorithm))
+    public Node middleNode(Node head) {
+        Node slow = head, fast = head;
+
+        while(fast!=null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        return slow;
+    }
+
     public static void main(String[] args) {
         MiddleNode list = new MiddleNode();
         for(int i=1;i<=6;i++){
