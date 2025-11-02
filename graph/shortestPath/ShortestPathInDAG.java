@@ -60,8 +60,12 @@ public class ShortestPathInDAG {
                         dist[neighbor.node] = dist[currNode] + neighbor.weight;
                     }
                 }
-            } else {
-                dist[currNode] = -1;
+            }
+        }
+
+        for(int i=0; i<v; i++){
+            if(dist[i] == Integer.MAX_VALUE){
+                dist[i] = -1;
             }
         }
         return dist;
